@@ -5,6 +5,19 @@ Console.WriteLine("===============================================");
 Console.WriteLine();
 
 var employee = new Employee("Sebastian", "Sebikowski");
+//try
+//{
+//    Employee empl = null;
+//    var name = empl.Name;
+//}
+//catch(Exception error)
+//{
+//    Console.WriteLine(error.Message);
+//}
+//finally
+//{
+//    Console.WriteLine("Finnaly here");
+//}
 
 
 while (true)
@@ -15,7 +28,15 @@ while (true)
     {
         break;
     }
-    employee.AddGrades(input);
+
+    try
+    {
+        employee.AddGrades(input);
+    }
+    catch (Exception err)
+    {
+        Console.WriteLine($"Pojawili sie wyjatek {err.Message}");
+    }
 }
 
 var statistics = employee.GetStatistics();

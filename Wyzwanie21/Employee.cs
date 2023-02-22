@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-
 namespace Wyzwanie21
 {
     public class Employee
@@ -21,7 +20,7 @@ namespace Wyzwanie21
             }
             else
             {
-                Console.WriteLine($"Podana ocena jest nieprawidlowa! {grade}");
+                throw new Exception("Niepoprawna wartosc oceny");
             }
         }
         public void AddGrades(char grade)
@@ -49,8 +48,7 @@ namespace Wyzwanie21
                     this.grades.Add(20);
                     break;
                 default:
-                    Console.WriteLine("Podaj poprawna litere");
-                    break;
+                    throw new Exception("Podaj poprawna litere");
             }
         }
         public void AddGrades(string grade)
@@ -61,7 +59,7 @@ namespace Wyzwanie21
             }
             else
             {
-                Console.WriteLine("String nie jest liczbą zmiennoprzecinkowa");
+                throw new Exception("String nie jest liczbą zmiennoprzecinkowa");
             }
         }
         public void AddGrades(int grade)
@@ -76,7 +74,7 @@ namespace Wyzwanie21
             }
             else
             {
-                Console.WriteLine("Wprowadzony double wykracza poza zakres float");
+                throw new Exception("Wprowadzony double wykracza poza zakres float");
             }
         }
         public Statistics GetStatistics()
