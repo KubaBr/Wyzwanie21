@@ -4,7 +4,6 @@ Console.WriteLine("Witamy w naszej aplikacji do oceny pracownikow!");
 Console.WriteLine("===============================================");
 Console.WriteLine();
 
-
 var employee = new Employee("Sebastian", "Sebikowski");
 
 
