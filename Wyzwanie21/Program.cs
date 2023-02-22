@@ -1,15 +1,25 @@
 ﻿using Wyzwanie21;
 
-var emplo = new Employee("Edyta", "Edkowska");
+Console.WriteLine("Witamy w naszej aplikacji do oceny pracownikow!");
+Console.WriteLine("===============================================");
+Console.WriteLine();
 
-double zmienna = double.MaxValue;
 
-emplo.AddGrades(zmienna);
-emplo.AddGrades("Kuba");
-emplo.AddGrades("4");
-emplo.AddGrades(4);
-emplo.AddGrades(77);
-emplo.AddGrades(707);
-emplo.AddGrades(-5);
+var employee = new Employee("Sebastian", "Sebikowski");
 
-var statistics = emplo.GetStatistics();
+
+while (true)
+{
+    Console.WriteLine("Wprowadz ocene pracownika: ");
+    var input = Console.ReadLine();
+    if (input == "q")
+    {
+        break;
+    }
+    employee.AddGrades(input);
+}
+
+var statistics = employee.GetStatistics();
+Console.WriteLine($"Srednia: {statistics.Avarage}");
+Console.WriteLine($"Min: {statistics.Min}");
+Console.WriteLine($"Max: {statistics.Max}");

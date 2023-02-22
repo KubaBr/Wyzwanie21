@@ -16,12 +16,41 @@ namespace Wyzwanie21
         {
             int valueInInt = (int)grade;
             if (grade >= 0 && grade <= 100)
-            {v
+            {
                 this.grades.Add(grade);
             }
             else
             {
                 Console.WriteLine($"Podana ocena jest nieprawidlowa! {grade}");
+            }
+        }
+        public void AddGrades(char grade)
+        {
+            switch (grade)
+            {
+                case 'A':
+                case 'a':
+                    this.grades.Add(100);
+                    break;
+                case 'B':
+                case 'b':
+                    this.grades.Add(80);
+                    break;
+                case 'C':
+                case 'c':
+                    this.grades.Add(60);
+                    break;
+                case 'D':
+                case 'd':
+                    this.grades.Add(40);
+                    break;
+                case 'E':
+                case 'e':
+                    this.grades.Add(20);
+                    break;
+                default:
+                    Console.WriteLine("Podaj poprawna litere");
+                    break;
             }
         }
         public void AddGrades(string grade)
@@ -64,6 +93,26 @@ namespace Wyzwanie21
                 statistics.Avarage += grade;
             }
             statistics.Avarage /= this.grades.Count;
+
+            switch (statistics.Avarage)
+            {
+                case var avarage when avarage >= 80:
+                    statistics.AvarageLetter = 'A';
+                    break;
+                case var avarage when avarage >= 60:
+                    statistics.AvarageLetter = 'B';
+                    break;
+                case var avarage when avarage >= 40:
+                    statistics.AvarageLetter = 'C';
+                    break;
+                case var avarage when avarage >= 20:
+                    statistics.AvarageLetter = 'D';
+                    break;
+                default:
+                    statistics.AvarageLetter = 'E';
+                    break;
+
+            }
 
             return statistics;
         }
