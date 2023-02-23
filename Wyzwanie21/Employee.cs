@@ -1,15 +1,17 @@
-﻿using System.Diagnostics;
-namespace Wyzwanie21
+﻿namespace Wyzwanie21
 {
-    public class Employee
+    public class Employee : Person
     {
         private List<float> grades = new List<float>();
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
         public Employee(string cName, string cSurname)
+    : base(cName, cSurname)
         {
-            this.Name = cName;
-            this.Surname = cSurname;
+
+        }
+        public Employee(string cName, string cSurname, string cGender)
+            : base(cName, cSurname, cGender)
+        {
+
         }
         public void AddGrades(float grade)
         {
