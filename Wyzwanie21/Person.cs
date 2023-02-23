@@ -1,6 +1,6 @@
 ﻿namespace Wyzwanie21
 {
-    public class Person
+    public abstract class Person
     {
         public string Name { get; private set; }
         public string Surname { get; private set; }
