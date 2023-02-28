@@ -1,19 +1,20 @@
-﻿namespace Wyzwanie21
+﻿using System;
+
+namespace Wyzwanie21
 {
-    public class Employee : Person
+    public class Supervisor : IEmployee
     {
+        public string Name => throw new NotImplementedException();
         private List<float> grades = new List<float>();
-        public string Name { get; private set; }
-        public Employee(string cName, string cSurname)
-    : base(cName, cSurname)
-        {
+        public string SuperName { get; private set; }
+        public string SuperSurname { get; private set; }
+        public Supervisor(string cName, string cSurname)
 
-        }
-        public Employee(string cName, string cSurname, string cGender)
-            : base(cSurname, cGender)
         {
-
+            this.SuperName = cName;
+            this.SuperSurname = cSurname;
         }
+
         public void AddGrades(float grade)
         {
             int valueInInt = (int)grade;
@@ -26,60 +27,61 @@
                 throw new Exception("Niepoprawna wartosc oceny");
             }
         }
+
         public void AddGrades(char grade)
         {
-            switch (grade)
-            {
-                case 'A':
-                case 'a':
-                    this.grades.Add(100);
-                    break;
-                case 'B':
-                case 'b':
-                    this.grades.Add(80);
-                    break;
-                case 'C':
-                case 'c':
-                    this.grades.Add(60);
-                    break;
-                case 'D':
-                case 'd':
-                    this.grades.Add(40);
-                    break;
-                case 'E':
-                case 'e':
-                    this.grades.Add(20);
-                    break;
-                default:
-                    throw new Exception("Podaj poprawna litere");
-            }
+            throw new NotImplementedException();
         }
+
         public void AddGrades(string grade)
         {
-            if (float.TryParse(grade, out float result))
+            float tmp = 0;
+            foreach (char x in grade)
             {
-                this.AddGrades(result);
+                if (x == '+')
+                {
+                    tmp += 5;
+                }
+                else if (x == '-')
+                {
+                    tmp -= 5;
+                }
+                switch (x)
+                {
+                    case '6':
+                        tmp += 100;
+                        break;
+                    case '5':
+                        tmp += 80;
+                        break;
+                    case '4':
+                        tmp += 60;
+                        break;
+                    case '3':
+                        tmp += 40;
+                        break;
+                    case '2':
+                        tmp += 20;
+                        break;
+                    default:
+                        tmp += 0;
+                        break;
+                }
             }
-            else
-            {
-                throw new Exception("String nie jest liczbą zmiennoprzecinkowa");
-            }
+            this.AddGrades(tmp);
+
         }
+
         public void AddGrades(int grade)
         {
-            this.AddGrades((float)grade);
+            throw new NotImplementedException();
         }
+
         public void AddGrades(double grade)
         {
-            if (grade <= float.MaxValue)
-            {
-                this.AddGrades((float)grade);
-            }
-            else
-            {
-                throw new Exception("Wprowadzony double wykracza poza zakres float");
-            }
+            throw new NotImplementedException();
         }
+
         public Statistics GetStatistics()
         {
             var statistics = new Statistics();
@@ -117,6 +119,5 @@
 
             return statistics;
         }
-
     }
 }
