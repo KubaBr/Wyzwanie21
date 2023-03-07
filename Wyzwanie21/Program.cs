@@ -4,16 +4,17 @@ Console.WriteLine("Witamy w naszej aplikacji do oceny pracownikow!");
 Console.WriteLine("===============================================");
 Console.WriteLine();
 
-var employee = new Employee("Sebastian", "Sebikowski");
-var szefo = new Supervisor("Edward", "Ącki");
+var employee = new EmployeeInFile("Sebastian", "Sebikowski");
 
+employee.AddGrades(0.7f);
+employee.AddGrades(0.2f);
+employee.AddGrades(0.4f);
+employee.AddGrades(0.4f);
 
-szefo.AddGrades("4-");
-
-var statistics = szefo.GetStatistics();
-Console.WriteLine($"Srednia: {statistics.Avarage}");
-Console.WriteLine($"Min: {statistics.Min}");
-Console.WriteLine($"Max: {statistics.Max}");
+var result = employee.GetStatistics();
+Console.WriteLine($"Srednia: {result.Avarage}");
+Console.WriteLine($"Min: {result.Min}");
+Console.WriteLine($"Max: {result.Max}");
 
 //while (true)
 //{
