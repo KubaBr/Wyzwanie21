@@ -90,36 +90,10 @@
         public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
-            statistics.Avarage = 0;
-            statistics.Min = float.MaxValue;
-            statistics.Max = float.MinValue;
-
-            foreach (var grade in grades)
+            
+            foreach(var grade in this.grades)
             {
-                statistics.Max = Math.Max(statistics.Max, grade);
-                statistics.Min = Math.Min(statistics.Min, grade);
-                statistics.Avarage += grade;
-            }
-            statistics.Avarage /= this.grades.Count;
-
-            switch (statistics.Avarage)
-            {
-                case var avarage when avarage >= 80:
-                    statistics.AvarageLetter = 'A';
-                    break;
-                case var avarage when avarage >= 60:
-                    statistics.AvarageLetter = 'B';
-                    break;
-                case var avarage when avarage >= 40:
-                    statistics.AvarageLetter = 'C';
-                    break;
-                case var avarage when avarage >= 20:
-                    statistics.AvarageLetter = 'D';
-                    break;
-                default:
-                    statistics.AvarageLetter = 'E';
-                    break;
-
+                statistics.AddGrade(grade);
             }
 
             return statistics;

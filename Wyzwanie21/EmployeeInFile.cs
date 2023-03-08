@@ -97,10 +97,6 @@ namespace Wyzwanie21
         public override Statistics GetStatistics()
         {
             var result = new Statistics();
-            result.Avarage = 0;
-            result.Min = float.MaxValue;
-            result.Max = float.MinValue;
-            var rowCount = 0;
 
             if (File.Exists(fileName))
             {
@@ -112,16 +108,12 @@ namespace Wyzwanie21
                     while (line != null)
                     {
                         var number = float.Parse(line);
-                        result.Max = Math.Max(result.Max, number);
-                        result.Min = Math.Min(result.Min, number);
-                        result.Avarage += number;
-                        rowCount++;
+                        result.AddGrade(number);
                         line = reader.ReadLine();
-
                     }
-                    result.Avarage /= rowCount;
                 }
             }
+
             return result;
         }
     }
