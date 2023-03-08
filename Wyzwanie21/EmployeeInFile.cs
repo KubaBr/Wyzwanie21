@@ -6,9 +6,10 @@ namespace Wyzwanie21
     {
         private string fileName = "grades.txt";
         private List<float> grades = new List<float>();
+        public override event GradeAddedDelegate GradeAdded;
 
 
-        public EmployeeInFile(string name, string surname) 
+        public EmployeeInFile(string name, string surname)
             : base(name, surname)
         {
 
@@ -23,6 +24,11 @@ namespace Wyzwanie21
                 {
                     writer.WriteLine(grade);
                 }
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
+
             }
             else
             {
@@ -101,7 +107,7 @@ namespace Wyzwanie21
 
                 using (var reader = File.OpenText(fileName))
                 {
-                
+
                     var line = reader.ReadLine();
                     while (line != null)
                     {

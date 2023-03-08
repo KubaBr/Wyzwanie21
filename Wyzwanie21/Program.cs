@@ -5,16 +5,15 @@ Console.WriteLine("===============================================");
 Console.WriteLine();
 
 var employee = new EmployeeInFile("Sebastian", "Sebikowski");
+var employee2 = new EmployeeInMemory("Grzegorz", "Grzesinski");
 
-employee.AddGrades(0.7f);
-employee.AddGrades(0.2f);
-employee.AddGrades(0.4f);
-employee.AddGrades(0.4f);
+employee2.GradeAdded += EmployeeGradeAdded;
 
-var result = employee.GetStatistics();
-Console.WriteLine($"Srednia: {result.Avarage}");
-Console.WriteLine($"Min: {result.Min}");
-Console.WriteLine($"Max: {result.Max}");
+void EmployeeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano nową ocenę");
+}
+employee2.AddGrades(0.9f);
 
 //while (true)
 //{
